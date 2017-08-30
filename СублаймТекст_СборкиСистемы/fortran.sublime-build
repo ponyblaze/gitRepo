@@ -1,0 +1,38 @@
+// ==============================================================================================
+//
+//                        ________    fortran.sublime-build    ________
+//                                                                                     8_29_2017
+// ==============================================================================================
+//
+// This sublime text build system calls a batch function to compile and execute a fortran program.
+// 		Variables passed to batch program 'runf90.bat':
+//			>>>  $file              -- [The full path to the current file, e.g., C:\Files\Chapter1.txt]
+//			>>>  $file_path         -- [The directory of the current file, e.g., C:\Files]
+//			>>>  $file_base_name    -- [The name-only portion of the current file, e.g., Chapter1]
+//
+//  IMPORTANT: The file path to the target 'runf90.bat' will be different for your machine!!!!
+//
+
+{
+	"cmd": [
+
+		"C://Users//lappy486//AppData//Roaming//Sublime Text 3//Packages//User//runf90.bat",
+		"$file", "$file_path", "$file_base_name"
+
+	],
+
+    "shell": true
+}
+
+
+// ------ OLD JSON ------ IGNORE --------
+//
+//{
+//    "cmd": ["gfortran", "-c", "$file"],
+//    "cmd": ["gcc", "$file"]
+//}
+//
+//{
+//	  "cmd": ["gfortran", "-fopenmp", "-o", "$file_base_name", "$file"],
+//	  "shell": false
+//}

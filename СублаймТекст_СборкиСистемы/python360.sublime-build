@@ -1,0 +1,13 @@
+// ==============================================================================================
+//
+//                        ________    python360.sublime-build    ________
+//                                                                                     8_29_2017
+// ==============================================================================================
+//
+// This sublime text build system calls v3.60 python.exe to compile and execute a python program.
+
+{
+    "cmd": ["c:/Python360/python.exe", "-u", "$file"],
+    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+    "selector": "source.python"
+}

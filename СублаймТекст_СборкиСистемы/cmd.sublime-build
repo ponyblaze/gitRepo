@@ -1,0 +1,69 @@
+//========================================================
+// =============== cmd.exe Build System ==================
+//========================================================
+//
+// This build system runs batch files through the
+// cmd.exe terminal in Windows.
+//
+// Jan. 1st, 2017
+//========================================================
+
+{
+	"cmd": ["start", "cmd", "/k", "$file_base_name"],
+    "shell": true
+}
+
+//---------- Format --------------------
+//{
+//    "cmd": ["command", "argument", "--flag"],
+//    "selector": ["source.js"],
+//    "path": "/usr/local/bin",
+//    "working_dir": "/projects/"
+//}
+// ----- Variables --------
+// $file_path - the directory of the current file being viewed
+// $file_name - only the name portion of the current file (extension included)
+// $file_base_name - the name portion of the current file (extension excluded)
+// $project_path - the directory path to the current project
+// $project_name - the name portion of the current project
+//
+// ----- Keys supported ------
+//
+// cmd - An array containing a command to run and its desired arguments and flags. 
+//       Note that Sublime will search your PATH for any tools listed unless an 
+//       absolute path has been used to point to them.
+// selector - An optional string used to locate the best builder to use for the 
+//       current file scope. This is only relevant if Tools/Build System/Automatic is true.
+// path - An optional string that replaces your current process’s PATH before 
+//       calling the commands listed.
+// working_dir - An optional string defining a directory to switch the current 
+//       directory to prior to calling any commands.
+// shell - An optional boolean that defines whether commands should be run 
+//       through the shell (e.g bash).
+// file_regex - An optional regular expression used to capture error output f
+//       rom commands.
+//
+
+// C++ with g++
+// {
+//     "cmd": ["g++", "$file", "-o", "$file_base_name", "-I/usr/local/include"],
+//     "selector": "source.c++",
+//     "windows": {
+//        "cmd": ["cl", "/Fo${file_path}", "/O2", "$file"]
+//     }
+// }
+
+// C with make
+// {
+//     "cmd": ["make && ./a.out"],
+//     "path": "/usr/bin:/usr/local/bin:...",
+//     "shell": true
+// }
+
+// Java
+// {
+//     "cmd": ["javac", "$file_name", "&&", "java", "$file_base_name"],
+//     "working_dir": "${project_path:${folder}}",
+//     "selector": "source.java",
+//     "shell": true
+// }
