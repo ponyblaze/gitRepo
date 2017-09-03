@@ -362,6 +362,8 @@ REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 :PSTDOWNLOAD
 youtube-dl -i -o "%%(playlist_index)s - %%(title)s.%%(ext)s" %pstcodeVAR% 
 
+REM start "" cmd /c "@echo off&mode con:cols=200 lines=20&echo Your playlist has finished downloading.&PING -n 3 127.0.0.1>nul"
+
 echo.
 echo    Enter another playlist code.
 echo        ~~~ OR ~~~
@@ -388,6 +390,8 @@ REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :URLDOWNLOAD
 youtube-dl -o "%%(title)s.%%(ext)s" %vidcodeVAR% 
+
+REM start "" cmd /c "@echo off&mode con:cols=200 lines=20&echo Your video has finished downloading.&PING -n 3 127.0.0.1>nul"
 
 echo.
 echo    Enter another code.
