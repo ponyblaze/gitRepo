@@ -1,32 +1,31 @@
 @echo off
-REM ###                                                                         ###
-REM ###            ~~~~~              ytd.bat             ~~~~~                 ###
-REM ###                                                                         ###
-REM ###   ytd.bat is a batch file to simplify the use of the youtube-dl.exe     ###
-REM ###   program. It can be set to prompt the user for a desired file          ###
-REM ###   destination, or to download to Desktop as default.  ytd.bat prompts   ###
-REM ###   the user for 11-character youtube video codes, verifies the user's    ###
-REM ###   input string is 11 characters in length, and then attempts to execute ###
-REM ###   the youtube-dl.exe program by calling it with the appropriate flags   ###
-REM ###   and variables.  When the youtube-dl.exe finishes executing, the user  ###
-REM ###   is prompted to either input an additional 11-character code if they   ###
-REM ###   desire to download another file, or they are given the option to      ###
-REM ###   terminate the program. Currently ytd.bat is specifically programmed   ###
-REM ###   to download the highest quality video file, but could be modified to  ###
-REM ###   offer the user other functionalities and capabilities of the          ###
-REM ###   youtube-dl.exe program, such as downloading just an mp3 audio file.   ###
-REM ###                                                                         ###
-REM ###                                                                         ###
-REM ###############################################################################
+REM ###                                                                                             ###
+REM ###                       ~~~~~              ytd.bat             ~~~~~                          ###
+REM ###                                                                                             ###
+REM ###   ytd.bat is a batch file to simplify the use of the youtube-dl.exe program. It can be set  ###
+REM ###   to prompt the user for a desired file destination, or to download to Desktop as default.  ###
+REM ###   ytd.bat prompts the user for 11-character youtube video codes, verifies the user's        ###
+REM ###   input string is 11 characters in length, and then attempts to execute                     ###
+REM ###   the youtube-dl.exe program by calling it with the appropriate flags                       ###
+REM ###   and variables.  When the youtube-dl.exe finishes executing, the user                      ###
+REM ###   is prompted to either input an additional 11-character code if they                       ###
+REM ###   desire to download another file, or they are given the option to                          ###
+REM ###   terminate the program. Currently ytd.bat is specifically programmed                       ###
+REM ###   to download the highest quality video file, but could be modified to                      ###
+REM ###   offer the user other functionalities and capabilities of the                              ###
+REM ###   youtube-dl.exe program, such as downloading just an mp3 audio file.                       ###
+REM ###                                                                                             ###
+REM ###                                                                                             ###
+REM ###################################################################################################
 REM 
-REM  %%%%%%%%%%%%%%%      READ BEFORE USING         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-REM  %%%%%%%%%%%%%%%%%%         READ BEFORE USING         %%%%%%%%%%%%%%%%%%%%%%%%
-REM  %%%%%%%%%%%%%%%%%%%%%%%%         READ BEFORE USING         %%%%%%%%%%%%%%%%%%
-REM  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         READ BEFORE USING      %%%%%%%%%%%%%%%
+REM  %%%%%%%%%%%%%%%      READ BEFORE USING         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+REM  %%%%%%%%%%%%%%%%%%         READ BEFORE USING         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+REM  %%%%%%%%%%%%%%%%%%%%%%%%         READ BEFORE USING         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+REM  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         READ BEFORE USING      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 REM
-REM  %%%%%%%    SETUP:   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-REM  %%%%%%%    SETUP:   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-REM  %%%%%%%    SETUP:   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+REM  %%%%%%%    SETUP:   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+REM  %%%%%%%    SETUP:   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+REM  %%%%%%%    SETUP:   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 REM
 REM  First, you must download the 'youtube-dl.exe' program off the internet.
 REM     -- https://yt-dl.org/latest/youtube-dl.exe
@@ -44,10 +43,10 @@ REM     -- run menu [win+r], typing 'ytd', and pressing Enter.
 REM
 REM  Next, set the DEFAULT_SAVE_PATH in the code below.
 REM
-REM &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-REM &&&&&&&                                                                 &&&&&&&
-REM &&&&&&&       OPTIONAL: Set the default terminal window position.       &&&&&&&
-REM &&&&&&&                                                                 &&&&&&&
+REM &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+REM &&&&&&&                                                                                     &&&&&&&
+REM &&&&&&&                 OPTIONAL: Set the default terminal window position.                 &&&&&&&
+REM &&&&&&&                                                                                     &&&&&&&
 REM
 REM     -- Open cmd.exe and Right-Click the icon in the top left corner
 REM
@@ -67,7 +66,7 @@ REM          --- [0,0] is where I prefer it to open.
 REM
 REM [ https://github.com/ponyblaze/gitRepo/blob/master/команда/ytd/set_position.gif ]
 REM
-REM &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+REM &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 REM Delayed expansion required
 setlocal enabledelayedexpansion
@@ -78,12 +77,12 @@ mode con:cols=80 lines=40
 
 
 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-REM  ~~~~~~~~~~~~~~~       DEFAULT_SAVE_PATH         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-REM  ~~~~~~~~~~~~~~~~~~          DEFAULT_SAVE_PATH         ~~~~~~~~~~~~~~~~~~~~~~~~
-REM  ~~~~~~~~~~~~~~~~~~~~~~~~          DEFAULT_SAVE_PATH         ~~~~~~~~~~~~~~~~~~
-REM  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          DEFAULT_SAVE_PATH      ~~~~~~~~~~~~~~~
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM  ~~~~~~~~~~~~~~~                 DEFAULT_SAVE_PATH                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM  ~~~~~~~~~~~~~~~~~~                    DEFAULT_SAVE_PATH                   ~~~~~~~~~~~~~~~~~~~~~~~~
+REM  ~~~~~~~~~~~~~~~~~~~~~~~~                    DEFAULT_SAVE_PATH                   ~~~~~~~~~~~~~~~~~~
+REM  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                    DEFAULT_SAVE_PATH                ~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 REM
 REM Change the working directory of the batch program to the default
 REM   save location. It is currently pointed towards the current user's
@@ -96,27 +95,48 @@ cd Desktop
 REM
 REM Change this line to { GOTO :URLPROMPT } to skip prompt for save location
 REM
-GOTO :DIRPROMPT
+GOTO :INIPROMPT
 REM 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
 
 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM       :INIPROMPT
+REM
+REM Prompt user to choose a type of input.
+REM                     
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:INIPROMPT
+
+cls
+call :INITITLEBLOCK
+set /p choiceVAR=" > "
+echo.
+REM if not defined choiceVAR exit
+if %choiceVAR%==1 GOTO :DIRPROMPT
+if %choiceVAR%==2 GOTO :URLPROMPT
+if %choiceVAR%==3 GOTO :PSTPROMPT
+GOTO :INIPROMPT
+
+
+
+
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 REM       :DIRPROMPT
 REM
-REM Prompt user with option to specify directory
-REM                     for file to be saved to.
-REM
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM Prompt user with option to specify directory for file to be saved to.
+REM                     
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :DIRPROMPT
 
 cls
 call :DIRTITLEBLOCK
-set /p My_Path="> "
+set /p My_Path=" > "
 echo.
 if not defined My_Path GOTO :URLPROMPT
 call :CheckDir "%My_Path%"
@@ -126,12 +146,12 @@ GOTO :DIRPROMPT
 
 
 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 REM       :CheckDir
 REM
 REM Error check the requested directory path.
 REM
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :CheckDir <fInput>
 (
@@ -140,7 +160,7 @@ REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         cls
         call :ER1TITLEBLOCK
-        set /p contin1="> "
+        set /p contin1=" > "
         echo.
 
         if not defined contin1 GOTO :URLPROMPT
@@ -153,7 +173,7 @@ REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     cls
     call :ER2TITLEBLOCK
-    set /p contin2="> "
+    set /p contin2=" > "
     echo.
 
     if not defined contin2 GOTO :URLPROMPT
@@ -167,7 +187,72 @@ REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM     :PSTPROMPT
+REM
+REM Prompt user for 34 digit youtube playlist url code.
+REM 
+REM    ex:             youtube.com/playlist?list=PLODnBH8kenOp7y_w1CWTtSLxGgAU6BR8M
+REM    playlist code:  PLODnBH8kenOp7y_w1CWTtSLxGgAU6BR8M
+REM
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:PSTPROMPT
+
+cls
+call:PSTTITLEBLOCK
+
+set /p pstcodeVAR=" > "
+echo.
+
+call :STRLEN resultVAL pstcodeVAR
+
+if %resultVAL%==34 GOTO :PSTDOWNLOAD
+
+if %resultVAL% NEQ 34 (
+
+    cls
+    call :ER4TITLEBLOCK
+    GOTO :PSTPROMPT)
+
+
+
+
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM     :PSTPOSTPROMPT
+REM
+REM For additional file downloads, an altered :PSTPROMPT subroutine must be added to preserve
+REM     the user input in the terminal. It may be redundant but it works this way so why change it.
+REM     
+REM
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:PSTPOSTPROMPT
+
+set /p pstcodeVAR=" > "
+echo.
+
+if %pstcodeVAR%==1 exit
+
+cls
+call :PSTTITLEBLOCK
+echo ^> %pstcodeVAR%
+echo.
+
+call :STRLEN resultVAL pstcodeVAR
+
+if %resultVAL%==34 GOTO :PSTDOWNLOAD
+
+if %resultVAL% NEQ 34 (
+
+    cls
+    call :ER4TITLEBLOCK
+    GOTO :PSTPROMPT)
+
+
+
+
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 REM     :URLPROMPT
 REM
 REM Prompt user for 11 digit youtube url code.
@@ -175,54 +260,54 @@ REM
 REM    ex:       youtube.com/watch?v=Vp1zrgcQORE
 REM    vidcode:  Vp1zrgcQORE
 REM
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :URLPROMPT
 
 cls
 call:URLTITLEBLOCK
 
-set /p vidcode="> "
+set /p vidcodeVAR=" > "
 echo.
 
-call :strlen result vidcode
+call :STRLEN result vidcodeVAR
 
-if %result%==11 GOTO DOWNLOAD
+if %result%==11 GOTO URLDOWNLOAD
 
 if %result% NEQ 11 (
 
     cls
-    call :ER2TITLEBLOCK
+    call :ER3TITLEBLOCK
 	GOTO URLPROMPT)
 
 
 
 
 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 REM     :URLPOSTPROMPT
 REM
 REM For additional file downloads, an alterated :URLPROMPT subroutine must be
 REM     added to preserve the user input in the terminal. It may be redundant
 REM     but it works this way so why change it.
 REM
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :URLPOSTPROMPT
 
-set /p vidcode="> "
+set /p vidcodeVAR=" > "
 echo.
 
-if %vidcode%==1 exit
+if %vidcodeVAR%==1 exit
 
 cls
-call:URLTITLEBLOCK
-echo ^> %vidcode%
+call :URLTITLEBLOCK
+echo ^> %vidcodeVAR%
 echo.
 
-call :strlen result vidcode
+call :STRLEN result vidcodeVAR
 
-if %result%==11 GOTO DOWNLOAD
+if %result%==11 GOTO URLDOWNLOAD
 
 if %result% NEQ 11 (
 
@@ -234,15 +319,15 @@ if %result% NEQ 11 (
 
 
 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-REM      :strlen
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM      :STRLEN
 REM
 REM Subroutine to error check length of %vidcode% string
 REM    {currently fails to handle string that begins with hyphen:  -  }
 REM
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:strlen <resultVar> <stringVar>
+:STRLEN <resultVar> <stringVar>
 (
     setlocal enabledelayedexpansion
     set "s=!%~2!#"
@@ -264,27 +349,54 @@ REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-REM     :DOWNLOAD
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM     :PSTDOWNLOAD
+REM
+REM Calls the youtube-dl.exe program and passes the appropriate flags and variables.
+REM
+REM Afterwards, prompts user with choice to download another 
+REM                                    playlist, or terminate the program.
+REM
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:PSTDOWNLOAD
+youtube-dl -i -o "%%(playlist_index)s - %%(title)s.%%(ext)s" %pstcodeVAR% 
+
+echo.
+echo    Enter another playlist code.
+echo        ~~~ OR ~~~
+echo    Press 1, then ENTER to QUIT
+echo  ==============================================================================
+echo.
+
+set "pstcodeVAR=0"
+
+GOTO PSTPOSTPROMPT
+
+
+
+
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM     :URLDOWNLOAD
 REM
 REM Calls the youtube-dl.exe program and passes the appropriate flags and variables.
 REM
 REM Afterwards, prompts user with choice to download another 
 REM                                    file, or terminate the program.
 REM
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:DOWNLOAD
-youtube-dl -o "%%(title)s.%%(ext)s" %vidcode%
+:URLDOWNLOAD
+youtube-dl -o "%%(title)s.%%(ext)s" %vidcodeVAR% 
 
 echo.
 echo    Enter another code.
 echo        ~~~ OR ~~~
 echo    Press 1, then ENTER to QUIT
-echo ==============================================================================
+echo  ==============================================================================
 echo.
 
-set "vidcode=0"
+set "vidcodeVAR=0"
 
 GOTO URLPOSTPROMPT
 
@@ -292,14 +404,38 @@ GOTO URLPOSTPROMPT
 
 
 
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 REM     :___TITLEBLOCK
 REM
 REM Hard-coded ASCII graphics, providing relevant
 REM              window text for each unique prompt.
 REM
-REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+:INITITLEBLOCK (
+    setlocal enabledelayedexpansion
+    echo  ==============================================================================
+    echo  ==============================================================================
+    echo.
+    echo                           Youtube Downloader UI
+    echo                                                                       Aug27_17
+    echo  ==============================================================================
+    echo  ==============================================================================
+    echo.
+    echo         Currently Saving To:
+    echo.
+    echo                  %cd%
+    echo.
+    echo  ==============================================================================
+    echo    WHAT ARE YOU TRYING TO DO?
+    echo  ========         Change Save Destination:   PRESS 1, then ENTER       ========
+    echo  ========         Download Video:            PRESS 2, then ENTER       ========
+    echo  ========         Download Playlist:         PRESS 3, then ENTER       ========
+    echo  ==============================================================================
+    echo.
+    endlocal
+    exit /b
+)
 :DIRTITLEBLOCK (
     setlocal enabledelayedexpansion
     echo  ==============================================================================
@@ -426,7 +562,56 @@ REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     endlocal
     exit /b
 )
-
+:ER4TITLEBLOCK (
+    setlocal enabledelayedexpansion
+    echo  ==============================================================================
+    echo  ==============================================================================
+    echo.
+    echo                           Youtube Downloader UI
+    echo                                                                       Aug27_17
+    echo  ==============================================================================
+    echo  ==============================================================================
+    echo.
+    echo         Currently Saving To:
+    echo.
+    echo                  %cd%
+    echo.
+    echo  ==============================================================================
+    echo                            INVALID PLAYLIST CODE
+    echo.
+    echo  ========       Press ENTER to try again.                              ========
+    echo  ========                                                              ========
+    echo  ========       Type any other string, then press ENTER to QUIT        ========
+    echo  ==============================================================================
+    echo.
+    endlocal
+    exit /b
+)
+:PSTTITLEBLOCK (
+    setlocal enabledelayedexpansion
+    echo  ==============================================================================
+    echo  ==============================================================================
+    echo.
+    echo                           Youtube Downloader UI
+    echo                                                                       Aug27_17
+    echo  ==============================================================================
+    echo  ==============================================================================
+    echo.
+    echo         Currently Saving To:
+    echo.
+    echo                  %cd%
+    echo.
+    echo  ==============================================================================
+    echo.
+    echo.
+    echo  ========                                                              ========
+    echo  ========          Enter a Thirty-Four Digit Playlist Code             ========
+    echo  ========                                                              ========
+    echo  ==============================================================================
+    echo.
+    endlocal
+    exit /b
+)
 
 
 
@@ -442,7 +627,8 @@ REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :EOF
 endlocal
-set /p pauseit="> "
+echo PRESS ENTER TO EXIT
+set /p pauseit=">>> "
 exit
 
 
