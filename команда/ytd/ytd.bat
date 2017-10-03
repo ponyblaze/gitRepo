@@ -389,7 +389,7 @@ REM
 REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :URLDOWNLOAD
-youtube-dl -o "%%(title)s.%%(ext)s" %vidcodeVAR% 
+youtube-dl -o "%%(title)s.%%(ext)s" -- %vidcodeVAR% 
 
 REM start "" cmd /c "@echo off&mode con:cols=200 lines=20&echo Your video has finished downloading.&PING -n 3 127.0.0.1>nul"
 
