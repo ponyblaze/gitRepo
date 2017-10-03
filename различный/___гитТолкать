@@ -1,0 +1,5 @@
+> cd c:/gitrepo
+> git add .
+> git commit -m "lets add some stuff"
+> git push origin master
+> exit
